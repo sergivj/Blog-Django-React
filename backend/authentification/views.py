@@ -5,7 +5,7 @@ from rest_framework.views import APIView
 from rest_framework_simplejwt.tokens import RefreshToken
 
 
-class HomeView(ApiView):
+class HomeView(APIView):
     permission_classes = (IsAuthenticated,)
 
     def get(self, request):
