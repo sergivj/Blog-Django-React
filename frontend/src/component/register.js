@@ -22,24 +22,9 @@ export const Register = () => {
         const {register} = await axios.post('http://localhost:8000/register/', user ,{headers: {
             'Content-Type': 'application/json'
         }}, {withCredentials: true});
-        console.log(register);
-        if(register !== undefined){
-            const {data} = await axios.post('http://localhost:8000/token/', user ,{headers: {
-                'Content-Type': 'application/json'
-            }}, {withCredentials: true});
 
-            localStorage.clear();
-            if(data !== undefined){
-                localStorage.setItem('access_token', data.access);
-                localStorage.setItem('refresh_token', data.refresh);
-                axios.defaults.headers.common['Authorization'] = `Bearer ${data['access']}`;
-                window.location.href = '/'
-            }
-            else{
-                alert('Invalid credentials');
-                window.location.href = '/login'
-            }
-        }
+
+        window.location.href = '/login';
     }
 
     return(
