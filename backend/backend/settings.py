@@ -28,7 +28,7 @@ DEBUG = True
 
 ALLOWED_HOSTS = ['*']
 
-AUTH_USER_MODEL = "authentification.User"
+
 
 
 # Application definition
@@ -43,8 +43,10 @@ INSTALLED_APPS = [
     'authentification.apps.AuthentificationConfig',
     'corsheaders',
     'rest_framework',
-    'rest_framework_simplejwt.token_blacklist'
+    'rest_framework_simplejwt.token_blacklist',
 ]
+
+AUTH_USER_MODEL = "authentification.User"
 
 CORS_ORIGIN_ALLOW_ALL = True
 

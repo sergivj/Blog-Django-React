@@ -1,16 +1,15 @@
 from django.urls import path, include
 from rest_framework.routers import DefaultRouter
+from authentification.infrastructure.viewsets.post_viewset import PostViewSet
+from authentification.infrastructure.viewsets.user_viewset import UserViewSet
+
 
 from . import views
 
 router = DefaultRouter()
-router.register(r'posts', views.PostListViewSet, basename='posts')
+router.register(r'posts', PostViewSet, basename='posts')
+router.register(r'users', UserViewSet, basename='users')
 
 urlpatterns = [
-    path('home/', views.HomeView.as_view(), name='home'),
-    path('logout/', views.LogoutView.as_view(), name='logout'),
-    path('api/', include(router.urls)),
-    path('new-entry/', views.NewEntryViewSet.as_view({
-         'post':'create',
-         }), name='new-entry'),
+    path('', include(router.urls)),
 ]

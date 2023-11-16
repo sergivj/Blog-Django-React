@@ -9,8 +9,8 @@ export const CreatePost = () => {
     useEffect(() => {
         const fetchData = async () => {
             try {
-                const response = await axios.get('http://localhost:8000/home/');
-                setUsername(response.data.user.id);
+                const response = await axios.get('http://localhost:8000/users/home/');
+                setUsername(response.data.user);
             }
             catch (error) {
                 console.log(error);
@@ -27,7 +27,7 @@ export const CreatePost = () => {
             author: username,
         };
 
-        const {register} = await axios.post('http://localhost:8000/new-entry/', user ,{headers: {
+        const {register} = await axios.post('http://localhost:8000/posts/', user ,{headers: {
             'Content-Type': 'application/json'
         }}, {withCredentials: true});
 

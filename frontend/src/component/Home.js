@@ -24,8 +24,8 @@ export const Home = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const postsResponse = await axios.get(`http://localhost:8000/api/posts/?page=${page}`);
-        const userResponse = await axios.get('http://localhost:8000/home/');
+        const postsResponse = await axios.get(`http://localhost:8000/posts/?page=${page}`);
+        const userResponse = await axios.get('http://localhost:8000/users/home');
 
         setPosts(postsResponse.data.results);
         setUser(userResponse.data.user);
@@ -49,7 +49,7 @@ export const Home = () => {
     setSelectedDeletePostIndex(selectedDeletePostIndex === index ? null : index);
     const deletePost = async () => {
         try {
-            const response = await axios.delete(`http://localhost:8000/api/posts/${posts[index].id}/`);
+            const response = await axios.delete(`http://localhost:8000/posts/${posts[index].id}/`);
             window.location.href = '/';
         } catch (error) {
             console.error('Error fetching data:', error);
