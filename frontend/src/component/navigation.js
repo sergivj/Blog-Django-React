@@ -16,11 +16,17 @@ export function Navigation() {
     <div>
     <Navbar bg="dark" variant="dark">
           <Navbar.Brand href="/"> Fiction Express - Sergi Villa</Navbar.Brand>
-          <Nav className="me-auto">
+          <Nav>
           {isAuth ?
             <Nav.Link href="/">Home</Nav.Link>
             : null}
           </Nav>
+         <Nav className="me-auto">
+            {isAuth ?
+              <Nav.Link href="/create-post">Write a Post</Nav.Link>
+                : null
+            }
+         </Nav>
           <Nav>
           {isAuth ?
             <Nav.Link href="/logout">Logout</Nav.Link>:
@@ -29,9 +35,11 @@ export function Navigation() {
           </Nav>
           <Nav>
             {!isAuth ?
-              <Nav.Link href="/register">Register</Nav.Link>: null
+              <Nav.Link href="/register">Register</Nav.Link>
+                : null
             }
           </Nav>
+
       </Navbar>
       </div>
   );

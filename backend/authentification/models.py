@@ -1,3 +1,5 @@
+from datetime import datetime
+
 from django.utils import timezone
 from django.db import models
 from django.contrib.auth.models import AbstractUser
@@ -8,7 +10,7 @@ class User(AbstractUser, models.Model):
     first_name = models.CharField(max_length=50)
     last_name = models.CharField(max_length=50)
     email = models.EmailField(max_length=254, unique=True)
-    password = models.CharField(max_length=50)
+    password = models.CharField(max_length=500)
 
     is_admin = models.BooleanField(default=False)
     is_active = models.BooleanField(default=True)
@@ -16,7 +18,7 @@ class User(AbstractUser, models.Model):
     is_superuser = models.BooleanField(default=False)
 
     last_login = models.DateTimeField(auto_now=True, blank=True, null=True)
-    date_joined = models.DateTimeField(auto_now_add=True, blank=True, null=True)
+    date_joined = models.DateTimeField(blank=True, null=True, auto_now=True)
 
     def create_new_user(self, username, name, lastname, email, password):
 
@@ -38,3 +40,14 @@ class User(AbstractUser, models.Model):
         user.set_password(password)
         user.save()
         return user
+
+
+class Post(models.Model):
+    id = models.AutoField(primary_key=True)
+    title = models.CharField(max_length=100)
+    content = models.TextField()
+    date_posted = models.DateTimeField(blank=True, null=True, default=datetime.now)
+    author = models.ForeignKey(User, on_delete=models.CASCADE)
+
+    def __str__(self):
+        return self.title
