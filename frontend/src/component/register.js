@@ -19,10 +19,9 @@ export const Register = () => {
             password: password
         };
 
-        const {register} = await axios.post('http://localhost:8000/register/', user ,{headers: {
+        const {register} = await axios.post('http://localhost:8000/register/register-user/', user ,{headers: {
             'Content-Type': 'application/json'
         }}, {withCredentials: true});
-
 
         window.location.href = '/login';
     }

@@ -1,10 +1,10 @@
-from backend.authentification.domain.models import Post
-from backend.authentification.application.services import PostService
+from authentification.application.services.post_service import PostService
+from authentification.domain.models.post_model import Post
 
 
 class PostUseCases:
-    def __init__(self, post_service: PostService):
-        self.post_service = post_service
+    def __init__(self):
+        self.post_service = PostService()
 
     def get_posts(self):
         return self.post_service.get_posts()

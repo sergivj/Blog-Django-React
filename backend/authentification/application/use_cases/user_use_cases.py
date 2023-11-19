@@ -1,11 +1,12 @@
 from typing import List
-from backend.authentification.domain.models import User
-from backend.authentification.application.services import UserService
+
+from authentification.application.services.user_service import UserService
+from authentification.domain.models.user_model import User
 
 
 class UserUseCases:
-    def __init__(self, user_service: UserService):
-        self.user_service = user_service
+    def __init__(self):
+        self.user_service = UserService()
 
     def create_user(self, user: User) -> User:
         return self.user_service.create_user(user)
