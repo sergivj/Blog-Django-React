@@ -34,6 +34,7 @@ Las tecnologías en las que nos hemos apoyado, han sido principalmente:
 * [![React][React-img]][React-url]
 * [![Bootstrap][Bootstrap-img]][Bootstrap-url]
 * [![Django][Django-img]][Django-url]
+* ![Docker](https://img.shields.io/badge/docker-%230db7ed.svg?style=for-the-badge&logo=docker&logoColor=white)
 
 
 <!-- LICENSE -->
